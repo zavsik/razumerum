@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Main.module.scss'
 
-export default function () {
+export default function Id() {
   return (
     <div className={styles.container}>
       <Head>
