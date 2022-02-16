@@ -5,22 +5,21 @@ import { useState, React, useRef } from 'react';
 
 export default function Users() {
     const textInput = useRef('')
+    const id = [0]
 
-    const [users, setUsers] = useState([{id: 1, user: 'Hello'}])
+    const [users, setUsers] = useState([])
        
     const removeUser = (id) => {
         const cloneUsers = users.slice(0).filter(user => user.id !== id);
         setUsers(_ => (cloneUsers))
-
     }
-    const createUser = () => {
-        console.log(textInput.current.value)
-        let cloneUsers = users.slice(0)
-        console.log(users)
-        let username = [
-            {id: 4, user: textInput.current.value}
-        ]
-        setUsers(_ => (username))
+    const cloneUsers = users.slice(0)
+
+    function createUser () {
+        let username = {id: id, user: textInput.current.value}
+        cloneUsers.push(username)
+        setUsers(cloneUsers)
+        
     }
 
     
@@ -41,14 +40,16 @@ export default function Users() {
                     <div className={styles.frame_users}>
                     <ul>
                         {
-                            users.map( user => {
+                            users.map( (user, idx) => {
                                 return (
-                                    <li key={user.id}>
-                                        {user.user}
-                                        <button onClick={ _ => removeUser( user.id ) }>
-                                            Удалить
-                                        </button>
-                                    </li>
+                                    <>
+                                        <li key={idx.id}>
+                                            <Link href={`users/${user.id}`}><a>{user.user}</a></Link>
+                                            <button onClick={ _ => removeUser( user.id ) }>
+                                                Удалить
+                                            </button>
+                                        </li>
+                                    </>
                                 );
                             })
                         }

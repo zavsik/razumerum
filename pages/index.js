@@ -14,7 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.navbar}>
           <Link href={'/users'}><a>Пользователи</a></Link>
-          <Link href={'/login'}><a>Вход в систему</a></Link>
+          <Link href={'/login'}><a>Вход</a></Link>
         </div>
       </main>
     </div>
